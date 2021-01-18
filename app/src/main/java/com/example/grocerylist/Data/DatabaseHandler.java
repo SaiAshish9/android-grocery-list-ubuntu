@@ -80,7 +80,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                         null, null, null, null
                 );
 
-        if (cursor != null)s
+        if (cursor != null)
             cursor.moveToFirst();
         Grocery grocery = new Grocery();
         grocery.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(Constants.KEY_ID))));
@@ -107,7 +107,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         Cursor cursor = db.query(
                 Constants.TABLE_NAME, new String[]{
-                        Constants.KEY_ID, Constants.KEY_GROCERY_ITEM, Constants.KEY_DATE_NAME}
+                        Constants.KEY_ID, Constants.KEY_GROCERY_ITEM, Constants.KEY_QTY_NUMBER,
+                        Constants.KEY_DATE_NAME
+                }
                 , null, null, null, null,
                 Constants.KEY_DATE_NAME + " DESC");
 
@@ -142,7 +144,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                         ))
                 );
                 grocery.setDateTimeAdded(formatDate);
-                groceryList.add(grocery)
+                groceryList.add(grocery);
             } while (cursor.moveToNext());
 
         }
